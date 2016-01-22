@@ -2,10 +2,30 @@
 <html>
 <head>
   <title>George Jia's Home Page</title>
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
   <style type="text/css">
     body {
       background-image: url(http://demo1.cssmoban.com/cssthemes3/yzts_11_FlexyVcard/images/bg/bg5.png);
       background-repeat: repeat;
+    }
+
+    .style-setting {
+      display: none;
+    }
+
+    .setting-btn {
+      display: inline-block;
+
+      margin-bottom: 20px;
+
+      font-size: 25px;
+      color: red;
+      background-color: white;
+      padding: 10px;
+    }
+
+    .setting-btn:hover {
+      cursor: pointer;
     }
 
     .white-word {
@@ -15,13 +35,53 @@
     .title-div {
       text-align: center;
     }
+
+    .wrapper,
+    .profile,
+    .content {
+      margin: auto;
+      border: 1px solid white;
+    }
+
+    .float-left {
+      float: left;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <div class="title-div">
+  <!-- <div class="title-div">
     <h1 class="white-word">George Jia's Home Page</h1>
+  </div> -->
+  <div id="styleSetting" class="style-setting col-md-3">
+    <h2>Style Setting Section</h2>
+  </div>
+  <div class="setting-btn">
+    <span id="settingIcon" class="glyphicon glyphicon-tags"></span>
   </div>
   <div class="wrapper">
+    <section class="tab-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="profile float-left col-md-3">
+                <h2>George Jia</h2>
+              </div>
+              <div class="content float-left col-md-9">
+                <h2>Flexible Content</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+  <script src="bower_components/jquery/dist/jquery.min.js"/>
+  <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"/>
+  <script src="scripts/main.js"/>
 </body>
 </html>
