@@ -15,7 +15,8 @@ module.exports = function (grunt) {
 
   // Automatically load required grunt tasks
   require('jit-grunt')(grunt, {
-    useminPrepare: 'grunt-usemin'
+    useminPrepare: 'grunt-usemin',
+    includereplace: 'grunt-include-replace'
   });
 
   // Configurable paths
@@ -54,6 +55,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'postcss']
+      },
+      includereplace: {
+        files: ['<%= config.app %>/{,*/}*.html'],
+        tasks: ['includereplace']
       }
     },
 
@@ -380,6 +385,21 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    includereplace: {
+      dist: {
+        options: {
+          // Task-specific options go here.
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>',
+          src: ['pages/*.html', 'index.html'],
+          dest: '.tmp',
+          flatten: true // Remove all path parts from generated dest paths.
+        }]
+      }
     }
   });
 
@@ -393,6 +413,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'includereplace',
       'concurrent:server',
       'postcss',
       'browserSync:livereload',
